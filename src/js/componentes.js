@@ -1,19 +1,25 @@
-import '../css/componentes.css';
-// import webpacklogo from '../assets/img/webpack-logo.png';
 
-export const saludar = ( nombre) => {
+//Referencias en el html 
+const divTodoList = document.querySelector('.todo-list');
 
-    console.log('Creando etiqueta h1');
+export const crearTodoHtml = (todo) => {
+    //backtick nos permite insertar como un string en multilinea
+    const htmlTodo = `<li class="${(todo.completado) ? 'completed' : '' }" data-id="${todo.id}">
+    <div class="view">
+        <input class="toggle" type="checkbox" ${(todo.completado) ? 'checked' : '' }>
+        <label>${todo.tarea}</label>
+        <button class="destroy"></button>
+    </div>
+    <input class="edit" value="Create a TodoMVC template">
+    </li>`;
+    //creamos el elemento html
+    //necesitamos crear un elemento que contenga lo que esta dentro del html
 
-    const h1 = document.createElement('h1');
-    h1.innerText = `Hola, ${nombre}!!!`;
+    const div = document.createElement('div');
+    div.innerHTML = htmlTodo;
 
-    document.body.append(h1);
+    divTodoList.append(div.firstElementChild);
 
-    //img
-    // console.log(webpacklogo);
-    // const img = document.createElement('img');
-    // img.src = webpacklogo;
-    // document.body.append(img);
+    return div.firstElementChild;
 
 }
