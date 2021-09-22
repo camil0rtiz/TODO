@@ -13,14 +13,15 @@ export class TodoList{
 
     eliminarTodo(id){
 
-        console.log(id);
-        this.todos.splice(id,1);
-        
-
     }
 
     marcaCompletado(id){
-
+        for(const todo of this.todos){
+            if(todo.id == id){
+                todo.completado = !todo.completado;
+                break;
+            }
+        }
     }
 
 
