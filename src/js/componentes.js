@@ -1,6 +1,9 @@
 
+import {Todo} from '../classes/todo.class'
+import {todoList} from '../index'
 //Referencias en el html 
 const divTodoList = document.querySelector('.todo-list');
+const txtInput = document.querySelector('.new-todo');
 
 export const crearTodoHtml = (todo) => {
     //backtick nos permite insertar como un string en multilinea
@@ -23,3 +26,22 @@ export const crearTodoHtml = (todo) => {
     return div.firstElementChild;
 
 }
+
+//eventos
+
+txtInput.addEventListener('keyup', (event)=>{
+
+    if(event.keyCode === 13 && txtInput.value.length > 0){
+
+        const nuevoTodo = new Todo(txtInput.value);
+        
+        todoList.nuevoTodo(nuevoTodo);
+
+        console.log(todoList);
+
+        crearTodoHtml(nuevoTodo);
+
+        txtInput.value = '';
+    }
+
+})
