@@ -5,6 +5,8 @@ import {todoList} from '../index'
 const divTodoList = document.querySelector('.todo-list');
 const txtInput = document.querySelector('.new-todo');
 const btnBorrar = document.querySelector('.clear-completed');
+const ulFiltros = document.querySelector('.filters');
+const anchorFiltro = document.querySelectorAll('.filtro')
 
 export const crearTodoHtml = (todo) => {
     //backtick nos permite insertar como un string en multilinea
@@ -75,6 +77,46 @@ btnBorrar.addEventListener('click', ()=>{
             divTodoList.removeChild(elemento);
         }
     }
+    
+
+})
+
+ulFiltros.addEventListener('click',(event)=>{
+
+    
+    const filtro = event.target.text;
+
+    anchorFiltro.forEach(elem => elem.classList.remove('selected'))
+    event.target.classList.add('selected');
+
+    if(!filtro){
+        return;
+    }
+
+    for(const elemento of divTodoList.children){
+        
+        elemento.classList.remove('hidden');
+        const completado = elemento.classList.contains('completed');//recordar que completado solo exite dento del scope {}
+
+        switch(filtro){
+
+                case 'Pendientes':
+                    
+                    if(completado){
+        
+                        elemento.classList.add('hidden');
+                    }
+                break;
+                case 'Completados':
+                    if(!completado){
+                        elemento.classList.add('hidden');
+                    }
+                break;
+        
+            }
+        
+    }
+
     
 
 })

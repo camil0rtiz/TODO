@@ -17,4 +17,6 @@ export const todoList = new TodoList();
 
 // crearTodoHtml(tarea);
 
-todoList.todos.array.forEach(todo => crearTodoHtml(todo));
+todoList.todos.forEach(todo => crearTodoHtml(todo));
+
+

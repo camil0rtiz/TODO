@@ -1,3 +1,4 @@
+import {Todo} from './todo.class';
 
 export class TodoList{
 
@@ -48,6 +49,8 @@ export class TodoList{
         }else{
             this.todos = [];//si no tiene nada crea un array vacio
         }
+
+        this.todos = this.todos.map(obj => Todo.fromJson(obj));
         
     }
 }
