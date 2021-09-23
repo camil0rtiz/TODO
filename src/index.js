@@ -9,10 +9,12 @@ import './style.css'
 
 export const todoList = new TodoList();
 
-const tarea = new Todo('Aprender JavaScript');
+// const tarea = new Todo('Aprender JavaScript');
 
-todoList.nuevoTodo(tarea);
+// todoList.nuevoTodo(tarea);
 
-console.log(todoList);
+// console.log(todoList);
 
-crearTodoHtml(tarea);
+// crearTodoHtml(tarea);
+
+todoList.todos.array.forEach(todo => crearTodoHtml(todo));
